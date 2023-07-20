@@ -351,3 +351,119 @@ body {
     text-transform: uppercase;
     font-weight: bold;
 }
+
+/**************
+*   GALLERY
+***************/
+
+
+
+.gallery {
+    padding: 100px 0;
+    background-color: var(--color-primary-light);
+
+}
+
+.gallery h2 {
+    color: var(--color-secondary);
+    font-weight: 400;
+    font-size: 50px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.gallery img {
+    margin: 0 auto;
+    display: block;
+}
+
+.gallery .gallery-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 730px;
+    height: 100vh;
+    margin: 50px auto;
+
+
+
+}
+
+.gallery .gallery-wrapper div{
+    border: 10px solid var(--color-primary);
+    margin: 6px;
+    width: 33%;
+}
+
+.gallery .gallery-wrapper img{
+    width: 100%;
+}
+
+/**************
+*   LOCATION
+***************/
+
+.location {
+    padding: 100px 0;
+    background: url(../images/bg-location.jpg);
+    background-size: cover;
+}
+
+.location .head {
+    display: flex;
+    justify-content: space-between;
+    background-color: #191919;
+    padding: 40px;
+    width: 100%;
+}
+
+.location .head .info {
+    display: flex;
+    align-items: center;
+}
+
+.location .head .info .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    margin-right: 10px;
+    border: 1px solid var(--color-primary);
+    padding: 10px;
+    width: 30px;
+    height: 30px;
+}
+
+.location .head .text span{
+    display: block;
+    font-size: 13px;
+}
+
+.location .head .text span:first-child{
+    color: silver;
+}
+
+.location .head .text span:last-child{
+    color: white;
+}
+
+.location .map {
+    width: 100%
+}
+
+.location .map iframe {
+    width: 100%
+}
+
+
+/**************
+*   Footer
+***************/
+
+.footer {
+    background-color: #191919;
+    color: white;
+    padding: 40px;
+    text-align: center;
+    font-size: 12px;
+}
