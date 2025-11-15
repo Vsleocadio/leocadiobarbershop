@@ -4,19 +4,29 @@
     --color-primary-light: #f5eee6;
 }
 
-*   {
-    margin:0;
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
     padding: 0;
 }
 
 body {
-    box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+    background-color: #fff;
+    color: #191919;
+    line-height: 1.5;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
 
 .container {
-    width: 1170px;
+    width: min(100%, 1170px);
     margin: 0 auto;
+    padding: 0 24px;
 }
 
 
@@ -29,12 +39,15 @@ body {
 
 
 
+
 .home {
     position: relative;
     background-size: cover;  /*cobrir área  */
+    background-position: center;
     background-image: url(../images/bg-home.jpg);
-    height: 100vh; /*view port rate (area visivel do navegador)*/
-    
+    min-height: 100vh; /*view port rate (area visivel do navegador)*/
+    display: flex;
+    flex-direction: column;
 }
 
 .home .header{
@@ -44,18 +57,21 @@ body {
 .home .header .nav{
     display: flex;
     justify-content: center;
+    padding: 0 24px;
 }
 
 .home .header .nav ul {
     display:flex;
     list-style: none;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
 }
 
 .home .header .nav ul li{
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 150px;
 }
 
 .home .header .nav ul li a{
@@ -64,7 +80,9 @@ body {
     text-decoration: none;
     font-weight: bold;
     font-size: 12px;
-    padding: 20px;
+    padding: 12px 20px;
+    letter-spacing: 1px;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
 }
 
 .home .header .nav ul li a:hover{
@@ -72,9 +90,14 @@ body {
     border-bottom: 1px solid var(--color-primary)
 }
 
+.home .header .nav ul li a:focus-visible{
+    outline: 2px solid var(--color-primary);
+    outline-offset: 4px;
+}
+
 .home .header .nav ul li .logo{
-    margin: 0 30px;
-    
+    margin: 0 24px;
+    max-width: 140px;
 }
 
 /**************************
@@ -83,23 +106,23 @@ body {
 
 .home .banner {
     color: white;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    height: 170px;
-    width: 1160px;
-    margin-top: -58px;
-    margin-left: -580px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
+    gap: 12px;
+    padding: 0 24px 40px;
 }
-
 
 .home .banner span{
     display: block;
 }
 
 .home .banner h1{
-    font-size: 70px;
+    font-size: clamp(40px, 8vw, 70px);
+    font-weight: 700;
 }
 
 .home .banner .slogan1 {
@@ -110,7 +133,11 @@ body {
 }
 
 .home .banner .slogan2 {
-    margin-bottom: 15px;
+    margin-bottom: 5px;
+}
+
+.home .banner img {
+    max-width: 260px;
 }
 
 /**************
@@ -119,26 +146,30 @@ body {
 
 .about {
     background-color: var(--color-primary);
+    padding: 80px 0;
 }
 
 .about .container{
     display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    align-items: stretch;
 }
 
 .about .timing {
-    position: relative;
-    top: -50px;
-    width: 24%;
+    flex: 1 1 280px;
     padding: 20px;
-    margin-left: 3%;
     background-image: url(../images/brush-big.jpg);
+    background-size: cover;
+    border-radius: 12px;
+    overflow: hidden;
 }
 
 .about .timing .overlay {
     background: rgba(0,0,0, 0.8);
     text-align: center;
     padding: 40px 20px;
-} 
+}
 
 .about .timing .icon-cut {
     width: 50px;
@@ -163,7 +194,7 @@ body {
     display:block;
     font-size: 25px;
     margin-top:10px
-    
+
 }
 
 .about .timing .text:last-of-type:after {
@@ -188,16 +219,19 @@ body {
 }
 
 .about .experience {
-    width: 66%;
+    flex: 1 1 420px;
     color: white;
-    margin-left: 7%;
-    margin-top: 100px;
+}
+
+.about .experience span {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 12px;
 }
 
 .about .experience h2{
-    font-size: 40px;
+    font-size: clamp(32px, 6vw, 40px);
     font-weight: 400;
-
 }
 
 .about .experience h2:after{
@@ -211,7 +245,9 @@ body {
 
 .about .experience .text {
     display: flex;
-    justify-content: space-between;
+    gap: 32px;
+    align-items: flex-start;
+    flex-wrap: wrap;
 }
 
 .about .experience .text p {
@@ -224,12 +260,17 @@ body {
     border-radius: 100%;
     width: auto;
     height: 80px;
+    margin: 24px 0;
+}
+
+.about .experience .text > div {
+    flex: 1 1 260px;
 }
 
 .about .experience .text img {
-    width: auto;
-    height: 375px;
-    margin-top: 107px;
+    flex: 1 1 260px;
+    max-height: 375px;
+    object-fit: cover;
 }
 
 
@@ -238,7 +279,7 @@ body {
 ***************/
 
 .services {
-    padding: 100px 0;
+    padding: 80px 0;
     text-align: center;
     background-color: var(--color-primary-light);
 }
@@ -246,20 +287,26 @@ body {
 .services h2 {
     color: var(--color-secondary);
     font-weight: 400;
-    font-size: 50px;
+    font-size: clamp(32px, 7vw, 50px);
 }
 
 .services .boxes {
     margin-top: 50px;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
 }
 
 .services .box {
     border: 3px solid var(--color-primary);
-    padding: 50px 40px ;
-    margin: 30px;
-}  
+    padding: 40px 32px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    border-radius: 12px;
+}
 
 .services .box h4 {
     color: var(--color-secondary);
@@ -277,19 +324,18 @@ body {
 ***************/
 
 .appointment {
-    padding: 100px 0;
+    padding: 80px 0;
     background-color: var(--color-primary);
-    height: 100vh;
     background-image: url(../images/chair-ic.png);
     background-repeat: no-repeat;
     background-position: right bottom;
-    background-size: 300px;
+    background-size: min(45vw, 320px);
 }
 
 .appointment h2 {
     color: var(--color-primary-light);
     font-weight: 400;
-    font-size: 50px;
+    font-size: clamp(32px, 7vw, 50px);
     margin-bottom: 10px;
     text-align: center;
 }
@@ -300,45 +346,45 @@ body {
 }
 
 .appointment form {
-    margin-top: 80px ;
+    margin-top: 60px ;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
 }
 
 
 .appointment .personal-data {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
 
 .appointment .input-wrapper {
     width: 100%;
-    margin-right: 50px;
-
 }
-
-.appointment .input-wrapper:last-of-type{
-    margin-right: 0;
-
-}
-
 
 .appointment label {
     display: block;
     font-size:14px;
-    margin-bottom: 0;
+    margin-bottom: 6px;
     color: var(--color-primary-light);
 }
 
-.appointment .personal-data input,select,textarea{
-    padding: 10px;
+.appointment .personal-data input,
+.appointment select,
+.appointment textarea{
+    padding: 12px;
     outline: none;
     border: none;
     width: 100%;
-    border-radius: 3px;
+    border-radius: 6px;
+    font-family: inherit;
+    background-color: #fff;
 }
 
 .appointment textarea {
-    height: 100px;
+    min-height: 120px;
+    resize: vertical;
 }
 
 
@@ -347,9 +393,17 @@ body {
     color: white;
     padding: 15px 40px;
     border: none;
-    margin-top: 10px;
     text-transform: uppercase;
     font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    align-self: flex-start;
+    transition: background-color 0.3s ease;
+}
+
+.appointment button:hover,
+.appointment button:focus-visible {
+    background-color: #2a1d10;
 }
 
 /**************
@@ -359,7 +413,7 @@ body {
 
 
 .gallery {
-    padding: 100px 0;
+    padding: 80px 0;
     background-color: var(--color-primary-light);
 
 }
@@ -367,7 +421,7 @@ body {
 .gallery h2 {
     color: var(--color-secondary);
     font-weight: 400;
-    font-size: 50px;
+    font-size: clamp(32px, 7vw, 50px);
     margin-bottom: 10px;
     text-align: center;
 }
@@ -378,21 +432,18 @@ body {
 }
 
 .gallery .gallery-wrapper {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    width: 730px;
-    height: 100vh;
-    margin: 50px auto;
-
-
-
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 18px;
+    margin: 40px auto 0;
 }
 
 .gallery .gallery-wrapper div{
-    border: 10px solid var(--color-primary);
-    margin: 6px;
-    width: 33%;
+    border: 6px solid var(--color-primary);
+    padding: 6px;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 .gallery .gallery-wrapper img{
@@ -404,14 +455,16 @@ body {
 ***************/
 
 .location {
-    padding: 100px 0;
+    padding: 80px 0;
     background: url(../images/bg-location.jpg);
     background-size: cover;
 }
 
 .location .head {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
+    gap: 24px;
     background-color: #191919;
     padding: 40px;
     width: 100%;
@@ -420,6 +473,8 @@ body {
 .location .head .info {
     display: flex;
     align-items: center;
+    gap: 12px;
+    flex: 1 1 220px;
 }
 
 .location .head .info .icon {
@@ -427,11 +482,11 @@ body {
     align-items: center;
     justify-content: center;
     border-radius: 100%;
-    margin-right: 10px;
     border: 1px solid var(--color-primary);
     padding: 10px;
-    width: 30px;
-    height: 30px;
+    width: 48px;
+    height: 48px;
+    background-color: rgba(145, 119, 88, 0.1);
 }
 
 .location .head .text span{
@@ -448,11 +503,16 @@ body {
 }
 
 .location .map {
-    width: 100%
+    width: 100%;
+    margin-top: 32px;
+    border-radius: 12px;
+    overflow: hidden;
 }
 
 .location .map iframe {
-    width: 100%
+    width: 100%;
+    min-height: 360px;
+    border: 0;
 }
 
 
@@ -466,4 +526,113 @@ body {
     padding: 40px;
     text-align: center;
     font-size: 12px;
+}
+
+@media (max-width: 992px) {
+    .home .header {
+        padding: 20px 0;
+    }
+
+    .home .banner img {
+        max-width: 220px;
+    }
+
+    .appointment {
+        background-size: min(50vw, 240px);
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 20px;
+    }
+
+    .home .header .nav ul {
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .home .header .nav ul li a {
+        padding: 10px 0;
+    }
+
+    .home .header .nav ul li .logo {
+        margin: 12px 0;
+        max-width: 110px;
+    }
+
+    .about {
+        padding: 60px 0;
+    }
+
+    .about .experience {
+        text-align: center;
+    }
+
+    .about .experience .text {
+        justify-content: center;
+    }
+
+    .about .experience .text > div,
+    .about .experience .text p {
+        text-align: left;
+    }
+
+    .services {
+        padding: 60px 0;
+    }
+
+    .appointment {
+        padding: 60px 0;
+        background-position: center bottom;
+        background-size: 180px;
+    }
+
+    .gallery {
+        padding: 60px 0;
+    }
+
+    .location {
+        padding: 60px 0;
+    }
+
+    .location .head {
+        padding: 28px;
+    }
+
+    .footer {
+        padding: 32px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 16px;
+    }
+
+    .home .banner .slogan1 {
+        letter-spacing: 2px;
+        font-size: 12px;
+    }
+
+    .home .banner h1 {
+        font-size: clamp(32px, 12vw, 48px);
+    }
+
+    .appointment button {
+        align-self: stretch;
+        text-align: center;
+    }
+
+    .location .head {
+        padding: 24px;
+    }
+
+    .location .map {
+        margin-top: 24px;
+    }
+
+    .location .map iframe {
+        min-height: 280px;
+    }
 }
